@@ -7,6 +7,8 @@ import helmet from "helmet";
 import { rateLimit } from "express-rate-limit";
 import { auth } from "express-oauth2-jwt-bearer";
 
+const app = express();
+
 const port = `${process.env.PORT}`;
 
 const jwtCheck = auth({
