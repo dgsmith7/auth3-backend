@@ -14,7 +14,7 @@ const port = `${process.env.PORT}`;
 const jwtCheck = auth({
   audience: `${process.env.AUDIENCE}`,
   issuerBaseURL: `${process.env.ISSUER_BASE_URL}`,
-  tokenSigningAlg: `${process.env.TOKEN_SIGNING_ALG}`,
+  tokenSigningAlg: "RS256",
 });
 
 /*
