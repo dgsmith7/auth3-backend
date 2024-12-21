@@ -70,7 +70,7 @@ const corsOptionsDev = {
 const corsOptionsProd = {
   credentials: true,
   allowedHeaders: ["Accept", "Content-Type"],
-  origin: "https://bbc-frontend-z6g9z.ondigitalocean.app",
+  origin: "https://24.162.65.75",
   methods: ["POST", "GET", "OPTIONS"],
 };
 
