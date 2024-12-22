@@ -70,7 +70,7 @@ const corsOptionsDev = {
 };
 
 const corsOptionsProd = {
-  credentials: true,
+  //  credentials: true,
   allowedHeaders: ["Accept", "Content-Type"],
   origin: "https://24.162.65.75",
   methods: ["POST", "GET", "OPTIONS"],
