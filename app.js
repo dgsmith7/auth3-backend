@@ -72,7 +72,7 @@ const corsOptionsDev = {
 const corsOptionsProd = {
   //  credentials: true,
   allowedHeaders: ["Accept", "Content-Type"],
-  origin: "https://24.162.65.75",
+  origin: "http://localhost:5173",
   methods: ["POST", "GET", "OPTIONS"],
 };
 
