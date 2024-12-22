@@ -65,14 +65,14 @@ app.use(originLogger);
 */
 const corsOptionsDev = {
   credentials: true,
-  origin: "http://24.162.65.75",
+  origin: "https://auth3-frontend-w5jsl.ondigitalocean.app",
   methods: ["POST", "GET", "OPTIONS"],
 };
 
 const corsOptionsProd = {
   //  credentials: true,
   allowedHeaders: ["Accept", "Content-Type"],
-  origin: "http://24.162.65.75",
+  origin: "https://auth3-frontend-w5jsl.ondigitalocean.app",
   methods: ["POST", "GET", "OPTIONS"],
 };
 
