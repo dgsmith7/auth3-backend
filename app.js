@@ -75,7 +75,7 @@ const corsOptionsProd = {
   methods: ["POST", "GET", "OPTIONS"],
 };
 
-app.use(cors(corsOptionsProd));
+//app.use(cors(corsOptionsProd));
 
 /*
   Helmet for headers and attack mitigation
