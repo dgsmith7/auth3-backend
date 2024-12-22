@@ -65,14 +65,14 @@ app.use(originLogger);
 */
 const corsOptionsDev = {
   credentials: true,
-  origin: "http://localhost:5173",
+  origin: "http://24.162.65.75",
   methods: ["POST", "GET", "OPTIONS"],
 };
 
 const corsOptionsProd = {
   //  credentials: true,
   allowedHeaders: ["Accept", "Content-Type"],
-  origin: "http://localhost:5173",
+  origin: "http://24.162.65.75",
   methods: ["POST", "GET", "OPTIONS"],
 };
 
