@@ -100,7 +100,7 @@ const corsOptionsProd = {
 //   })
 // );
 
-app.post("/api/external", async (req, res, err) => {
+app.get("/external", async (req, res, err) => {
   console.log("in...");
   //  const token = await utils.generateCSRFToken(req.session.id);
   //  req.session.csrfToken = token;
