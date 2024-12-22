@@ -70,7 +70,7 @@ const corsOptionsDev = {
 };
 
 const corsOptionsProd = {
-  allowedHeaders: ["Accept", "Content-Type", "Authorization"],
+  allowedHeaders: ["Content-Type", "Authorization"],
   origin: "https://auth3-frontend-w5jsl.ondigitalocean.app",
   methods: ["POST", "GET", "OPTIONS"],
 };
