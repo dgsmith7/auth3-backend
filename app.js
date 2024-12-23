@@ -3,11 +3,12 @@ import dotenv from "dotenv";
 dotenv.config();
 import cors from "cors";
 import winston from "winston";
-import helmet from "helmet";
 import { rateLimit } from "express-rate-limit";
 import { auth } from "express-oauth2-jwt-bearer";
 
 const app = express();
+
+app.use(cors());
 
 const port = `${process.env.PORT}`;
 
@@ -51,60 +52,18 @@ app.use(originLogger);
 /*
   Limiter for dDOS attack mitigation
 */
-// const limiter = rateLimit({
-//   windowMs: 15 * 60 * 1000, // 15 minutes
-//   limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
-//   standardHeaders: "draft-7", // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
-//   legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
-//   // store: ... , // Redis, Memcached, etc. See below.
-// });
-// app.use(limiter);
-
-/* 
-  CORS
-*/
-const corsOptionsDev = {
-  credentials: true,
-  origin: "https://auth3-frontend-w5jsl.ondigitalocean.app",
-  methods: ["POST", "GET", "OPTIONS"],
-};
-
-const corsOptionsProd = {
-  allowedHeaders: ["Content-Type", "Authorization"],
-  origin: "https://auth3-frontend-w5jsl.ondigitalocean.app",
-  methods: ["POST", "GET", "OPTIONS"],
-};
-
-//app.use(cors(corsOptionsProd));
-
-/*
-  Helmet for headers and attack mitigation
-*/
-// app.use(
-//   helmet({
-//     contentSecurityPolicy: {
-//       directives: {
-//         "default-src": ["'self'"],
-//         "base-uri": ["'self'"],
-//         "font-src": ["'self'"],
-//         "form-action": ["'self'"],
-//         "frame-ancestors": ["'self'"],
-//         "img-src": ["'self'"],
-//         "object-src": ["'none'"],
-//         "script-src": ["'self'"],
-//         "script-src-attr": ["'none'"],
-//         "style-src": ["'self'"],
-//       },
-//       //reportOnly: true;
-//     },
-//   })
-// );
+const limiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 minutes
+  limit: 100, // Limit each IP to 100 requests per `window` (here, per 15 minutes).
+  standardHeaders: "draft-7", // draft-6: `RateLimit-*` headers; draft-7: combined `RateLimit` header
+  legacyHeaders: false, // Disable the `X-RateLimit-*` headers.
+  // store: ... , // Redis, Memcached, etc. See below.
+});
+app.use(limiter);
 
 app.get("/external", async (req, res, err) => {
   console.log("in...");
-  //  const token = await utils.generateCSRFToken(req.session.id);
-  //  req.session.csrfToken = token;
-  const token = "Yo mama!";
+  const token = "You accessed the secure backend!";
   console.log("headers: ", req.headers);
   try {
     res.status(200).send({ csrfToken: token });
