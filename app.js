@@ -62,9 +62,12 @@ const limiter = rateLimit({
 app.use(limiter);
 
 app.get("/external", async (req, res, err) => {
-  console.log("in...");
+  logger.log({
+    level: "info",
+    message: `in external get`,
+  });
   const token = "You accessed the secure backend!";
-  console.log("headers: ", req.headers);
+  //console.log("headers: ", req.headers);
   try {
     res.status(200).send({ csrfToken: token });
   } catch (err) {
